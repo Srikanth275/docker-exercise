@@ -4,12 +4,14 @@ import sys
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def index():
     env = os.getenv("ENVIRONMENT", None)
     return {
         "env": env
     }
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
