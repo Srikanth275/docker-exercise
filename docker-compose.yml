@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  pythonapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    hostname: localhost
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://0.0.0.0:3000"]
+      interval: 2s
+      timeout: 3s
+      retries: 3
+    environment:
+      - ENVIRONMENT=prod
